@@ -13,7 +13,6 @@ class Game{
         this.fps = fps;
         this.entities = [];
         this.delay = 1000/this.fps;
-        this.spawninitial();
     }
     renderScreen(){
         //clear screen

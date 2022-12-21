@@ -1,6 +1,7 @@
 class Entity{
-    constructor(sprite, xPos=0, yPos=0, xVelocity=0, yVelocity=0, mass=0, xAcceleration=0, yAcceleration=0){
+    constructor(sprite, game, xPos=0, yPos=0, xVelocity=0, yVelocity=0, mass=0, xAcceleration=0, yAcceleration=0){
         this.sprite = sprite;
+        this.game = game;
         this.xPos = xPos;
         this.yPos = yPos;
         this.xVelocity = xVelocity;
