@@ -3,6 +3,7 @@ class Fooloon extends Game{
         super(fps, width, height);
         this.pistol = new Pistol("sprites/pistol.png", this, 0 ,240);
         this.entities.push(this.pistol);
+        this.spawnBalloonFreq = 3;
     }
     keyDownHandler(keyEvent){
         switch(keyEvent.key){
@@ -17,6 +18,14 @@ class Fooloon extends Game{
                 break;
         }
         console.log(keyEvent.key);
+    }
+    spawnEntities(){
+        var floorTime = Math.floor(this.time);
+        if ( floorTime!=this.lastSpawn && floorTime%this.spawnBalloonFreq==0){
+            this.lastSpawn = floorTime;
+            var balloon = new Balloon("sprites/balloon.png", this, Math.floor((Math.random() * (this.width-80*2)) + 80), this.height, -2);
+            this.entities.push(balloon);
+        }
     }
     keyUpHandler(keyEvent){
         this.pistol.yVelocity = 0; 

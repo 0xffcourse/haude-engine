@@ -1,5 +1,5 @@
 class Game{
-    constructor(fps=100,width=800,height=480){
+    constructor(fps=60,width=800,height=480){
         this.width = width;
         this.height = height;
         this.gameBox = document.getElementById("gamebox");
@@ -13,6 +13,7 @@ class Game{
         this.fps = fps;
         this.entities = [];
         this.delay = 1000/this.fps;
+        this.time = 0;
     }
     renderScreen(){
         //clear screen
@@ -36,12 +37,17 @@ class Game{
             this.gameBox.appendChild(entityDrawn);
         }
     }
+    spawnEntities(time){
+        //override this method    
+    }
     eventLoop(){
         for (var i=0; i<this.entities.length; i++){
             var entity = this.entities[i];
             entity.applyPhysics(this);
         }
         this.renderScreen();
+        this.time += this.delay/1000;
+        this.spawnEntities();
     }
     start(windowctx){
         windowctx.setInterval(this.eventLoop.bind(this),this.delay);
