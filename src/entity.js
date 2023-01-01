@@ -8,11 +8,14 @@ class Entity{
         this.yVelocity = yVelocity;
         this.xAcceleration = xAcceleration;
         this.yAcceleration = yAcceleration;
+        this.drawable = true;
+        this.epoch = 0;
     }
     applyPhysics(){
         this.xPos += this.xVelocity + (this.xAcceleration/2);
         this.yPos += this.yVelocity + (this.yAcceleration/2);
         this.xVelocity += this.xAcceleration;
         this.yVelocity += this.yAcceleration;
+        this.epoch += 1;
     }
 }

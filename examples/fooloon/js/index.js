@@ -17,7 +17,6 @@ class Fooloon extends Game{
                 this.pistol.yVelocity = 5;
                 break;
         }
-        console.log(keyEvent.key);
     }
     spawnEntities(){
         var floorTime = Math.floor(this.time);

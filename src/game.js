@@ -21,6 +21,7 @@ class Game{
         //draw all objects in the screen
         for (var i=0; i<this.entities.length; i++){
             var entity = this.entities[i];
+            if (!entity.drawable) continue;
             //don't draw out of bound objects.
             if(entity.xPos<-1000 || entity.xPos>this.width+1000
             || entity.yPos<-1000 || entity.yPos>this.height+1000){
