@@ -20,6 +20,8 @@ class Game{
         this.world = new World();
         var canvas = window.document.getElementById(canvasId);
         this.screen = new Screen(this, canvas, contextType, debugMode);
+
+        this.keyboard = new Keyboard(window);
         
         this.frame = 0;
 

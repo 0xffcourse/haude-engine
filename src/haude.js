@@ -15,6 +15,7 @@ async function loadScripts(){
     let engineScripts = [
         '/_core/world.js',
         '/_core/entity.js',
+        '/controls/keyboard.js',
         '/game/game.js',
         '/graphics/screen.js',
         '/graphics/sprite.js'

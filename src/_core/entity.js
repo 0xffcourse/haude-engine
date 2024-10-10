@@ -1,5 +1,6 @@
 class Entity{
 
+    world;
     mass;
     epoch;
     position;
@@ -15,6 +16,7 @@ class Entity{
     drawable;
 
     constructor(
+        world,
         mass,
         epoch,
         position = [0, 0],
@@ -30,6 +32,7 @@ class Entity{
         drawable = true,
 
     ){
+        this.world = world;
         this.mass = mass;
         this.epoch = epoch;
         this.position = position;
