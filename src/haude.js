@@ -13,6 +13,7 @@ function loadScript(pathFromOutside, scriptPath){
 
 async function loadScripts(){
     let engineScripts = [
+        '/physics/kinematics.js',
         '/_core/world.js',
         '/_core/entity.js',
         '/controls/keyboard.js',

@@ -24,6 +24,10 @@ class Game{
         this.keyboard = new Keyboard(window);
         
         this.frame = 0;
+        this.lastTime = Date.now();
+        this.averageFps = 0;
+        this.highestFps = null;
+        this.lowestFps = null;
 
         this.eventLoop = this.eventLoop.bind(this);
     }
@@ -32,7 +36,7 @@ class Game{
         this.eventLoop();
     }
 
-    eventLoop(){
+    eventLoop(currentTime){
         //clear the screen
         this.screen.clear();
         
@@ -44,6 +48,21 @@ class Game{
 
         //draw the updated world in screen
         this.screen.draw(this.world);
+
+        //frame-time calculation
+        currentTime = Date.now();
+        let deltaTime = (currentTime - this.lastTime)/1000;
+        this.lastTime = currentTime;
+        
+        if(deltaTime>0){
+            var currentFps = Math.round(1/deltaTime);
+            this.averageFps = (this.averageFps+currentFps)/2;
+            if(this.lowestFps==null || currentFps<this.lowestFps) this.lowestFps = currentFps;
+            if(this.highestFps==null || currentFps>this.highestFps) this.highestFps = currentFps;
+        }
+        if(this.debugMode){
+            console.log(`Current FPS: ${currentFps}, Average FPS: ${this.averageFps}(high:${this.highestFps},low:${this.lowestFps})`);
+        }
 
         //loop
         requestAnimationFrame(this.eventLoop);
