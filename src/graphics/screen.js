@@ -24,6 +24,9 @@ class Screen{
                 this.context.strokeStyle = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},1)`;
                 this.context.strokeRect(entity.position[0],entity.position[1],entity.size[0],entity.size[1]);
             }
+            if(entity.drawable && entity.spriteMap && entity.spriteMap[entity.state]){
+                this.context.drawImage(entity.spriteMap[entity.state], entity.position[0], entity.position[1]);
+            }
         }
     }
 }

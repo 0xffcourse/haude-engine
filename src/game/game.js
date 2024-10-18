@@ -8,6 +8,10 @@ class Game{
 
     frame;
 
+    loadAssets(){
+        
+    }
+
     constructor(
         window,
         canvasId,
@@ -16,6 +20,8 @@ class Game{
     ){
         this.window = window;
         this.debugMode = debugMode;
+
+        this.loadAssets();
 
         this.world = new World();
         var canvas = window.document.getElementById(canvasId);
@@ -53,16 +59,13 @@ class Game{
         currentTime = Date.now();
         let deltaTime = (currentTime - this.lastTime)/1000;
         this.lastTime = currentTime;
-        
         if(deltaTime>0){
             var currentFps = Math.round(1/deltaTime);
             this.averageFps = (this.averageFps+currentFps)/2;
             if(this.lowestFps==null || currentFps<this.lowestFps) this.lowestFps = currentFps;
             if(this.highestFps==null || currentFps>this.highestFps) this.highestFps = currentFps;
         }
-        if(this.debugMode){
-            console.log(`Current FPS: ${currentFps}, Average FPS: ${this.averageFps}(high:${this.highestFps},low:${this.lowestFps})`);
-        }
+        console.log(`Current FPS: ${currentFps}, Average FPS: ${this.averageFps}(high:${this.highestFps},low:${this.lowestFps})`);
 
         //loop
         requestAnimationFrame(this.eventLoop);
