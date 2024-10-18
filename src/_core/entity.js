@@ -4,7 +4,7 @@ class Entity{
     mass;
     epoch;
     position;
-    size;
+    hitBoxDeviant;
     spriteMap;
 
     state;
@@ -20,7 +20,7 @@ class Entity{
         mass,
         epoch,
         position = [0, 0],
-        size = [0, 0],
+        hitBoxDeviant = [0, 0, 0, 0],
         spriteMap,
 
         state = "DEFAULT",
@@ -36,7 +36,7 @@ class Entity{
         this.mass = mass;
         this.epoch = epoch;
         this.position = position;
-        this.size = size;
+        this.hitBoxDeviant = hitBoxDeviant;
         this.spriteMap = spriteMap;
 
         this.state = state;

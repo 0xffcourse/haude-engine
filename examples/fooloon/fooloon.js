@@ -1,6 +1,5 @@
 class Fooloon extends Game{
     loadAssets(){
-        super.loadAssets();
         this.gunSprite = new Sprite('assets/sprites/pistol.png');
         this.bulletSprite = new Sprite('assets/sprites/bullet.png');
         this.balloonSprite = new Sprite('assets/sprites/balloon.png');
@@ -26,7 +25,7 @@ class Fooloon extends Game{
             10,
             0,
             [20, 20],
-            [100, 100],
+            [0, 0, 45, 45],
             {"DEFAULT": this.gunSprite},
             "DEFAULT",
             [0, 0],
@@ -43,19 +42,7 @@ class Fooloon extends Game{
                     this.gun.velocity[1] = 5;
                     break;
                 case " ":
-                    let bullet = new this.Bullet(
-                        this.world,
-                        1,
-                        0,
-                        [this.gun.position[0], this.gun.position[1]],
-                        [50, 50],
-                        {"DEFAULT": this.bulletSprite},
-                        "DEFAULT",
-                        [15, 0],
-                        [0, 0],
-                        false
-                    );
-                    this.world.entities.push(bullet);
+                    this.shoot();
                     break;
                 default:
                     break;
@@ -73,12 +60,27 @@ class Fooloon extends Game{
                 1,
                 0,
                 [150+(Math.random()*800), 700],
-                [50, 50],
+                [13, 0, 22, 35],
                 {"DEFAULT": this.balloonSprite},
                 "DEFAULT",
             );
             this.world.entities.push(balloon);
         }
+    }
+    shoot(){
+        let bullet = new this.Bullet(
+            this.world,
+            1,
+            0,
+            [this.gun.position[0], this.gun.position[1]],
+            [0, 5, 25, 15],
+            {"DEFAULT": this.bulletSprite},
+            "DEFAULT",
+            [15, 0],
+            [0, 0],
+            false
+        );
+        this.world.entities.push(bullet);
     }
 };
 
